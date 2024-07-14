@@ -1,0 +1,14 @@
+%pip install ultralytics
+import ultralytics
+ultralytics.checks()
+
+from google.colab import drive
+drive.mount ('/content/drive')
+
+!unzip '/content/drive/MyDrive/Colab Notebooks/Program/PKLot.v4-416by416_roboflow-accurate-model.yolov8.zip'
+
+!yolo train model=yolov8n.pt data=/content/data.yaml epochs = 1 imgsz = 640
+
+!yolo predict model=/content/runs/detect/train2/weights/best.pt source='directory file testing'
+
+Catatan : pada code terakhir untuk source testing ubah menjadi directory gambar yang akan anda uji.
